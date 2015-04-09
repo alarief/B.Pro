@@ -1,2 +1,2 @@
 # B.Pro
-PERCOBAAN
+Pertemuan 2
