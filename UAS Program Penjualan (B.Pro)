@@ -1,0 +1,343 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Vector;
+import java.io.*;
+
+public class TokoHp {
+  
+  //Method Garis
+  public static void garis(){
+    System.out.println("==========================");
+  }
+  
+  //Method Spasi Enter
+  public static void spasi(){
+    System.out.println(" ");
+  }
+  
+  //Method User Login
+  public static String user [][] = {{"admin","admin"},{"kasir","kasir"},{"arif","arif"},{"al","al"}};
+  
+  //Main Program
+    public static void main(String[] args)throws IOException{
+      BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+      
+        //Deklarasi Vektor Data Barang
+        Vector merek_hp = new Vector();
+        Vector kode_hp = new Vector();
+        Vector harga_hp = new Vector();
+        Vector stok_hp = new Vector ();
+       
+        //Deklarasi Vektor Data jual
+        Vector kode_hp_jual = new Vector();
+        Vector merek_hp_jual = new Vector();
+        Vector harga_hp_jual = new Vector();
+        Vector banyak_hp_jual = new Vector();
+        Vector jumlah_harga_jual = new Vector();
+        
+        kode_hp.add("H01");
+        merek_hp.add("Samsung Galaxy S6");
+        harga_hp.add("5000000");
+        stok_hp.add("32");
+        
+        kode_hp.add("H02");
+        merek_hp.add("Samsung Galaxy S5");
+        harga_hp.add("4500000");
+        stok_hp.add("25");
+        
+        kode_hp.add("H03");
+        merek_hp.add("Nokia Lumia");
+        harga_hp.add("3000000");
+        stok_hp.add("20");
+        
+        kode_hp.add("H04");
+        merek_hp.add("Blackberry Gemini");
+        harga_hp.add("1500000");
+        stok_hp.add("25");
+        
+        kode_hp.add("H05");
+        merek_hp.add("Blackberry Curve");
+        harga_hp.add("1300000");
+        stok_hp.add("20");
+        
+        kode_hp.add("H06");
+        merek_hp.add("Blackberry Bold 9000");
+        harga_hp.add("3500000");
+        stok_hp.add("23");
+        
+        kode_hp.add("H07");
+        merek_hp.add("Blackberry Z9");
+        harga_hp.add("4000000");
+        stok_hp.add("15");
+        
+        kode_hp.add("H08");
+        merek_hp.add("Blackberry Bold 9100");
+        harga_hp.add("2000000");
+        stok_hp.add("25");
+        
+        kode_hp.add("H09");
+        merek_hp.add("Blackberry Bold 9000");
+        harga_hp.add("3500000");
+        stok_hp.add("25");
+        
+        //Deklarasi Variabel
+        int pilih_menu_2=0;
+        int pilih_menu_3=0;
+        int pilih_menu_4=0;
+        int i=1;
+        boolean masuk=false;
+        String username,password;
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat contoh1 = new SimpleDateFormat("EE, dd/MM/yyyy \t\tHH:mm:ss");
+        String Tanggal1= contoh1.format(cal.getTime());
+         
+        //Login Program
+        do{
+          garis();
+          System.out.println("      Selamat Datang");
+          System.out.println("       Toko AL.Phone");
+          System.out.println("      Silahkan Login");
+          garis();
+          System.out.print("Username : ");
+          username=br.readLine();
+          System.out.print("Password : ");
+          password=br.readLine();
+          System.out.println("Percobaan Login Ke " +i);
+          
+          for(int j=0;j<user.length;j++){
+            if(username.equals(user[j][0]) && password.equals(user[j][1])){
+              i=4;
+              masuk = true;  
+            }
+          }
+          i++;
+          System.out.println();
+        }while(i<=3);
+        
+        if(masuk==true){
+          do{
+                    garis();
+                    System.out.println("      Program Utama");
+                    garis();
+                    String pili;
+                    System.out.println("1. Insert");
+                    System.out.println("2. Update");
+                    System.out.println("3. Delete");
+                    System.out.println("4. Transaksi");
+                    System.out.println("5. Cek Stok Barang");
+                    System.out.println("6. Keluar");
+                    System.out.print("Pilih Menu (1-6): ");
+                    spasi();
+                    pilih_menu_2=Integer.parseInt(br.readLine());
+                    switch (pilih_menu_2){
+                        case 1 :
+                            
+                            garis();
+                            System.out.println("        Insert ");
+                            garis();
+                            System.out.println("1. Data Hp");
+                            System.out.println("2. Kembali Ke Program Utama");
+                            System.out.print("Pilih Menu (1-2): ");
+                            spasi();
+                            pilih_menu_2=Integer.parseInt(br.readLine());
+                            switch (pilih_menu_2){
+                                case 1 :
+                                    garis();
+                                    System.out.println("       Insert Data Hp");
+                                    garis();
+                                    do {
+                                    System.out.print("Kode Hp : ");
+                                    kode_hp.add(br.readLine());
+                                    System.out.print("Merek Hp : ");
+                                    merek_hp.add(br.readLine());       
+                                    System.out.print("Jumlah : ");
+                                    stok_hp.add(br.readLine());
+                                    System.out.print("Harga (Rp.): ");
+                                    harga_hp.add(br.readLine()); System.out.println();
+                                    System.out.print("Input Data Lagi ? (Y/T) :");
+                                    spasi();
+                                    pili=br.readLine();
+                                    } while (pili.equalsIgnoreCase("y"));
+                                    break;
+                            } 
+                            break;
+                            
+                        case 2 :
+                            garis();
+                            System.out.println("        Update ");
+                            garis();
+                            System.out.println("1. Data Hp");
+                            System.out.println("2. Kembali Ke Program Utama");
+                            System.out.print("Pilih Menu (1-2): ");
+                            spasi();
+                            pilih_menu_2=Integer.parseInt(br.readLine());
+                            switch (pilih_menu_2){
+                                case 1 :
+                                    garis();
+                                    System.out.println("      Update Data Hp");
+                                    garis();
+                                    String pil32;
+                                    do {
+                                    System.out.print("Kode Hp : ");
+                                    String  tmp = br.readLine();
+                                    System.out.print("Stok Hp Saat ini : ");
+                                    stok_hp.removeElementAt(kode_hp.indexOf(tmp));
+                                    stok_hp.insertElementAt(br.readLine(), kode_hp.indexOf(tmp));
+                                    System.out.print("Update Data Lagi (Y/T) : ");
+                                    spasi();
+                                    pil32=br.readLine();
+                                    }while(pil32.equalsIgnoreCase("y"));
+                                    break;
+                                    
+                            }
+                            break;
+                        case 3 : 
+                            garis();
+                            System.out.println("      Delete ");
+                            garis();
+                            System.out.println("1. Data Hp");
+                            System.out.println("2. Kembali Ke Program Utama");
+                            System.out.print("Pilih Menu (1-2): ");
+                            spasi();
+                            pilih_menu_2=Integer.parseInt(br.readLine());
+                            switch (pilih_menu_2)
+                            {
+                                case 1:
+                                    garis();
+                                    System.out.println("      Hapus Data Hp");
+                                    garis();
+                                    String pilh;
+                                    int ada = 1;
+                                    do {
+                                        System.out.print("Kode Hp Yang Akan Dihapus : ");
+                                        String code =br.readLine();
+                        
+                                        for (int x=0;x<kode_hp.size();x++) {
+                                            if (kode_hp.elementAt(x).toString().equalsIgnoreCase(code+"")) {
+                                                ada = 1;
+                                            break;
+                                            } else {
+                                            ada = 0;
+                                            }
+                                                   }
+                                        if (ada == 1) {
+                                        merek_hp.removeElementAt(kode_hp.indexOf(code));
+                                        harga_hp.removeElementAt(kode_hp.indexOf(code));
+                                        stok_hp.removeElementAt(kode_hp.indexOf(code));
+                                        kode_hp.removeElementAt(kode_hp.indexOf(code));
+                                        System.out.println("Data Hp Dihapus");
+                                        } else { 
+                                          spasi();
+                                          System.out.println("Kode Hp Tidak Ditemukan !!!"); }
+                                    System.out.print("Hapus Data Lagi? (Y/T) : ");
+                                    spasi();
+                                    pilh=br.readLine();
+                                    }while(pilh.equalsIgnoreCase("y"));
+                                    break;
+                            }
+                            break;
+                        case 4 :
+                                    do {
+                                    garis();
+                                    System.out.println("        Transaksi");
+                                    garis();
+                                    System.out.println("1. Program Beli");
+                                    System.out.println("2. Laporan Penjualan");
+                                    System.out.println("3. Kembali Ke Program Utama");
+                                    System.out.print("Pilih Menu (1-3): ");
+                                    spasi();
+                                    pilih_menu_4=Integer.parseInt(br.readLine());
+                                    switch (pilih_menu_4) {
+                                        case 1 :
+                                            garis();
+                                            System.out.println("        Program Beli");
+                                            garis();
+                                            String pil33;
+                                            
+                                            int total=0;
+                                            int total_harga [] = new int [20];
+                                            String code [] = new String[20];
+                                            int jml []= new int [20];
+                                            do {
+                                            System.out.print("Masukkan Banyak Kode Hp : ");
+                                            int n = Integer.parseInt(br.readLine());
+                                                
+                                                for (int x=0;x<n;x++){
+                                                    System.out.print("Masukkan Kode Hp : ");
+                                                    code[x] = br.readLine();
+                                                    System.out.print("Masukkan Jumlah Hp : ");
+                                                    jml[x] = Integer.parseInt(br.readLine());
+                                                    total_harga[x] = jml[x]*Integer.parseInt(harga_hp.elementAt(kode_hp.indexOf(code[x])).toString());
+                                                    total+=total_harga[x];
+                                                    
+                                                        //Mengurangi Stok hp
+                                                        int total_sekarang = Integer.parseInt(stok_hp.elementAt(kode_hp.indexOf(code[x])).toString())-jml[x];
+                                                        stok_hp.removeElementAt(kode_hp.indexOf(code[x]));
+                                                        stok_hp.insertElementAt(total_sekarang, kode_hp.indexOf(code[x]));
+                  
+                                                        
+                                                        
+                                                        //Record Data jual
+                                                        kode_hp_jual.add(code[x]);
+                                                        merek_hp_jual.add(merek_hp.elementAt(kode_hp.indexOf(code[x])));
+                                                        harga_hp_jual.add(harga_hp.elementAt(kode_hp.indexOf(code[x])));
+                                                        banyak_hp_jual.add(jml[x]);
+                                                        jumlah_harga_jual.add(total_harga[x]);
+                                                        
+                                                    System.out.println();
+                                                }
+                                                System.out.println("Nama hp \t\t\tUnit \t\tHarga \t\tTotal \t\tTanggal \t\t\tJam");
+                                                for (int x=0;x<n;x++) {
+                                                System.out.println(merek_hp.elementAt(kode_hp.indexOf(code[x]))+" \t\t"+jml[x]+" \t\t"+harga_hp.elementAt(kode_hp.indexOf(code[x]))+" \t\t"+total_harga[x]+"\t\t"+Tanggal1);
+                                                }
+                                                
+                                                System.out.println("TOTAL HARGA \t\t\t\t\t\t:"+total);
+                                                spasi();
+                                            System.out.print("Beli Lagi? (Y/T) : ");
+                                            spasi();
+                                            pil33=br.readLine();
+                                            }while(pil33.equalsIgnoreCase("y"));
+                                            break;
+                                        case 2  :
+                                            garis();
+                                            System.out.println("    Laporoan Penjualan");
+                                            garis();
+                                            System.out.println("Kode Hp\t\t Merk Hp \t\t\tHarga \t\tJumlah \t\tTotal Harga");
+                                            for (int x=0;x<kode_hp_jual.size();x++){
+                                                System.out.println(kode_hp_jual.elementAt(x)+" \t\t"+merek_hp_jual.elementAt(x)+" \t\t"+harga_hp_jual.elementAt(x)+" \t\t"+banyak_hp_jual.elementAt(x)+" \t\t"+jumlah_harga_jual.elementAt(x));
+                                                }
+                                            
+                                            break;
+                                    }
+                                    
+                                    }while(pilih_menu_4<3);
+                            break;
+                            
+                            case 5 :
+                              garis();
+                              System.out.println("        Stok Hp ");
+                              garis();
+                              System.out.println("Kode Hp \t\tMerk Hp\t\t\tStok Hp\t\tHarga Hp");
+                              for (int x=0;x<kode_hp.size();x++){
+                                
+                                System.out.println(kode_hp.elementAt(x)+"\t\t"+merek_hp.elementAt(x)+"\t\t"+stok_hp.elementAt(x)+"\t\t"+harga_hp.elementAt(x));
+                                
+                              }
+                              spasi();
+                              break;
+                              
+                              case 6 :
+                                    String pilhp;
+                                    do {
+                                    System.out.print("Apakah Anda Yakin Ingin Keluar (Y/T) : ");
+                                    pilhp=br.readLine();
+                                    }while(pilhp.equalsIgnoreCase("t"));
+                                    break;
+                    }
+                        }while(pilih_menu_2<6);
+                            }else{
+                              System.out.println("  Gagal Login 3x Silahkan Ulangi Lagi");
+                              System.out.println("Masukkan ID Atau Password Dengan Benar");}
+
+            }   
+        }
