@@ -1,0 +1,54 @@
+import java.util.LinkedList;
+import java.util.Stack;
+class StackSederhana {
+    //DEKLARASI
+    private int maxsize;
+    private long[]arraystack;
+    private int top;
+    
+    //STACK BERTIPE INTEGER
+    public stack(int x){
+        maxsize=x;
+        arraystack=new long[maxsize];
+        top=-1;
+    }
+    //MENAMBAH DATA KE DALAM STACK
+    public void push(int j){
+        arraystack[++top]=j; 
+    }
+    //MEMBUANG DATA DARI STACK
+    public long pop()
+    {
+        return arraystack[top--];
+    }
+    public boolean kosong(){
+        return top==-1;
+    }
+    public boolean penuh(){
+        return top==maxsize-1;
+    }
+            
+  public static void main(String[] args) {
+            stack tumpukan=new stack(10);
+            tumpukan.push(10);
+            tumpukan.push(20);
+            tumpukan.push(30);
+            tumpukan.push(40);
+            tumpukan.push(50);
+            tumpukan.push(60);
+            tumpukan.push(70);
+            tumpukan.push(80);
+            tumpukan.push(90);
+            tumpukan.push(100);
+            while(!tumpukan.kosong())
+            {
+                long nilai=tumpukan.pop();
+                System.out.print(nilai);
+                System.out.println("");
+            }
+            
+            
+        }
+}  
+
+
